@@ -19,6 +19,9 @@ a:focus,
 a:active {
   outline: none;
 }
+a:visited {
+  color: inherit;
+}
 nav,
 footer,
 header,

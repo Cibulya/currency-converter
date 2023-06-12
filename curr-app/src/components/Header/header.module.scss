@@ -1,0 +1,19 @@
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.site__name {
+  font-weight: bold;
+}
+
+.logo__container {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
