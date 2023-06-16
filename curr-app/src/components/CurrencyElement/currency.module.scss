@@ -1,0 +1,12 @@
+.list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid green;
+  padding: 1em;
+  border-radius: 5px;
+  width: 220px;
+  &:last-child {
+    grid-column: 3;
+  }
+}
