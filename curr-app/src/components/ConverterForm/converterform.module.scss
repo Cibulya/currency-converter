@@ -6,6 +6,7 @@
   color: inherit;
   border: 1px solid rgb(2, 137, 155);
   border-radius: 5px;
+  cursor: pointer;
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -66,10 +67,10 @@
   border: 1px solid rgb(2, 137, 155);
   border-radius: 5px;
   text-align: center;
-  border-radius: 5px;
   font-style: italic;
   font-weight: bold;
   color: inherit;
+  cursor: pointer;
   &:hover {
     transition: all 0.8s ease;
     color: rgb(3, 25, 97);
