@@ -1,3 +1,4 @@
+// experimental component,not used in this application
 import styles from '@/components/DropDown/dropdown.module.scss';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { currencySlice } from '@/rtk/store/reducers/CurrencySlice';

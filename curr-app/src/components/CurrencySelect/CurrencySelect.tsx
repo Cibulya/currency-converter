@@ -1,4 +1,4 @@
-import styles from '@/components/ui/CurrencySelect/select.module.scss';
+import styles from '@/components/CurrencySelect/select.module.scss';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { currencySlice } from '@/rtk/store/reducers/CurrencySlice';
 import { SingleCurrency } from '@/types/currency-types';
