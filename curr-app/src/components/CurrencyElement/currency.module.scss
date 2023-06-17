@@ -1,0 +1,18 @@
+.list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid rgb(2, 137, 155);
+  padding: 1em;
+  border-radius: 5px;
+  width: 220px;
+
+  &:last-child {
+    grid-column: 3;
+  }
+}
+
+.currency__title {
+  font-style: italic;
+  text-align: center;
+}

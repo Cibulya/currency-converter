@@ -1,4 +1,20 @@
+@import "nullstyles.scss";
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("../../public/fonts/Roboto-Regular.ttf");
+}
+
 body {
-  background-color: black;
-  color: greenyellow;
+  color: black;
+  background: rgb(138, 191, 203);
+  background-size: cover;
+}
+
+#__next {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  font-weight: bolder;
+  flex-direction: column;
+  height: 100%;
+  color: rgb(5, 62, 88);
 }

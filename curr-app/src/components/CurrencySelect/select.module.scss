@@ -1,0 +1,17 @@
+.option {
+  padding: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.select {
+  margin-top: 10px;
+  width: 300px;
+  height: 40px;
+  background-color: rgb(138, 191, 203);
+  border: 1px solid rgb(2, 137, 155);
+  border-radius: 5px;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
