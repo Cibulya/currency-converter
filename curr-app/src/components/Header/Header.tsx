@@ -8,7 +8,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.logo__container}>
         <Image src={Logo} alt="logo" className={styles.logo}></Image>
-        <span className={styles.site__name}>Currency converter</span>
+        <span className={styles.site__name}>Конвертер валют</span>
       </div>
       <Navigation />
     </header>

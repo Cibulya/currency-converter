@@ -1,6 +1,6 @@
 import AllCurrencies from '@/components/AllCurrencies/AllCurrencies';
-import DropDown from '@/components/DropDown/DropDown';
 import CurrencySelect from '@/components/ui/CurrencySelect/CurrencySelect';
+import style from '@/styles/home.module.scss';
 import Head from 'next/head';
 
 export default function Home() {
@@ -12,15 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {/* <DropDown /> */}
+      <div className={style.content}>
         <CurrencySelect />
         <AllCurrencies />
       </div>

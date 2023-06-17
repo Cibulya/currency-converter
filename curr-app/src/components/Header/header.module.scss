@@ -6,10 +6,13 @@
 .header {
   display: flex;
   align-items: center;
+  background: rgb(103, 166, 180);
+  padding: 16px;
 }
 
 .site__name {
   font-weight: bold;
+  font-size: 16px;
 }
 
 .logo__container {

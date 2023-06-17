@@ -3,8 +3,12 @@ import Link from 'next/link';
 const Navigation = () => {
   return (
     <nav className={styles.nav}>
-      <Link href="/">Home</Link>
-      <Link href="/converter">Converter</Link>
+      <Link className={styles.link} href="/">
+        Главная
+      </Link>
+      <Link className={styles.link} href="/converter">
+        Конвертер
+      </Link>
     </nav>
   );
 };

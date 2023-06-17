@@ -5,18 +5,15 @@ interface CurrencySliceState {
   defaultCurr: string;
   defaultCurrId: number;
   currArray: SingleCurrency[];
+  result: number;
 }
 
 const initialState: CurrencySliceState = {
   defaultCurr: 'BYN',
   currArray: [],
   defaultCurrId: 0,
+  result: 1,
 };
-
-interface IdAndName {
-  name: string;
-  id: number;
-}
 
 export const currencySlice = createSlice({
   name: 'currency',
@@ -31,12 +28,8 @@ export const currencySlice = createSlice({
     setCurrenciesList(state, action: PayloadAction<SingleCurrency[]>) {
       state.currArray = action.payload;
     },
-    setName(state, action: PayloadAction<IdAndName>) {
-      state.currArray.map((el) => {
-        if (el.Cur_ID === action.payload.id) {
-          el.Cur_Name = action.payload.name;
-        }
-      });
+    setResult(state, action: PayloadAction<number>) {
+      state.result = action.payload;
     },
   },
 });

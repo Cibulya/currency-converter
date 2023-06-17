@@ -10,7 +10,7 @@ const CurrencyElement = ({ ...props }: SingleCurrency) => {
 
   return (
     <li className={styles.list__item}>
-      <span>{Cur_Name}</span>
+      <span className={styles.currency__title}>{Cur_Name}</span>
       <span>Аббревиатура: {Cur_Abbreviation}</span>
       <span>
         {Cur_Scale} {Cur_Abbreviation} = {Cur_OfficialRate} {defaultCurr}

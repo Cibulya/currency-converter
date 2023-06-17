@@ -6,3 +6,12 @@
   gap: 1em;
   font-weight: bold;
 }
+
+.link {
+  &:hover {
+    transition: all 0.8s ease;
+    color: rgb(3, 25, 97);
+  }
+
+  font-size: 16px;
+}
