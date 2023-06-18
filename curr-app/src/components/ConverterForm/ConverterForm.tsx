@@ -1,13 +1,12 @@
 import styles from '@/components/ConverterForm/converterform.module.scss';
 import currencyAPI from '@/currency-api/currency-service';
-import { findElement, isBynCurrency } from '@/helpers/helpers';
+import conversion from '@/helpers/conversion';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { calcBynMultiConversion, calcConversion } from '@/math/math-operations';
 import { currencySlice } from '@/rtk/store/reducers/CurrencySlice';
 import { useForm } from 'react-hook-form';
 import { SubmitHandler } from 'react-hook-form/dist/types';
 
-interface FormData {
+export interface FormData {
   curOne: string;
   curTwo: string;
   multiplier: number;
@@ -30,48 +29,9 @@ const ConverterForm = () => {
     dispatch(setResult(1));
   };
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    if (currencies) {
-      const curOneCheck = isBynCurrency(data.curOne);
-      const curTwoCheck = isBynCurrency(data.curTwo);
-      const isBothCurrByn = curOneCheck && curTwoCheck;
-      const bothCurrCheck = (curOneCheck && curTwoCheck) === false;
-      switch (true) {
-        case isBothCurrByn: {
-          dispatch(setResult(data.multiplier));
-          break;
-        }
-        case curOneCheck: {
-          const findedCurrency = findElement(currencies, data.curTwo);
-          const calcResult = calcBynMultiConversion(
-            findedCurrency.Cur_Scale,
-            findedCurrency.Cur_OfficialRate,
-            data.multiplier
-          );
-          dispatch(setResult(calcResult));
-          break;
-        }
-        case curTwoCheck: {
-          const findedCurrency = findElement(currencies, data.curOne);
-          const calcResult = calcBynMultiConversion(
-            findedCurrency.Cur_Scale,
-            findedCurrency.Cur_OfficialRate,
-            data.multiplier
-          );
-          dispatch(setResult(calcResult));
-          break;
-        }
-        case bothCurrCheck: {
-          const firstCurrency = findElement(currencies, data.curOne);
-          const secondCurrency = findElement(currencies, data.curTwo);
-          const calcResult = calcConversion(secondCurrency, firstCurrency, data.multiplier);
-          dispatch(setResult(calcResult));
-          break;
-        }
-        default: {
-          dispatch(setResult(data.multiplier));
-        }
-      }
-    }
+    if (!currencies) return;
+    const summary = conversion(data, currencies);
+    dispatch(setResult(summary));
   };
 
   return (
@@ -86,17 +46,16 @@ const ConverterForm = () => {
             name="curOne"
           >
             <option value="BYN">Из: BYN Белорусский рубль</option>
-            {currencies &&
-              currencies.map((el) => {
-                return (
-                  <option key={el.Cur_ID} value={el.Cur_Abbreviation}>
-                    Из:
-                    {el.Cur_Abbreviation}
-                    &nbsp;&nbsp;
-                    {el.Cur_Name}
-                  </option>
-                );
-              })}
+            {currencies?.map((el) => {
+              return (
+                <option key={el.Cur_ID} value={el.Cur_Abbreviation}>
+                  Из:
+                  {el.Cur_Abbreviation}
+                  &nbsp;&nbsp;
+                  {el.Cur_Name}
+                </option>
+              );
+            })}
           </select>
         </label>
         <label htmlFor="curTwo">
@@ -107,17 +66,16 @@ const ConverterForm = () => {
             defaultValue="BYN"
           >
             <option value="BYN">В:&nbsp;&nbsp;BYN Белорусский рубль</option>
-            {currencies &&
-              currencies.map((el) => {
-                return (
-                  <option id={el.Cur_ID.toString()} key={el.Cur_ID} value={el.Cur_Abbreviation}>
-                    В:&nbsp;&nbsp;
-                    {el.Cur_Abbreviation}
-                    &nbsp;&nbsp;
-                    {el.Cur_Name}
-                  </option>
-                );
-              })}
+            {currencies?.map((el) => {
+              return (
+                <option id={el.Cur_ID.toString()} key={el.Cur_ID} value={el.Cur_Abbreviation}>
+                  В:&nbsp;&nbsp;
+                  {el.Cur_Abbreviation}
+                  &nbsp;&nbsp;
+                  {el.Cur_Name}
+                </option>
+              );
+            })}
           </select>
         </label>
         <div className={styles.rate__container}>

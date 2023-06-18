@@ -1,6 +1,6 @@
 import currencyAPI from '@/currency-api/currency-service';
 import currencyReducer from '@/rtk/store/reducers/CurrencySlice';
-import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 export const rootReducer = combineReducers({
   currencyReducer,
@@ -10,7 +10,7 @@ export const rootReducer = combineReducers({
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware().concat(currencyAPI.middleware),
+    middleware: (middleware) => middleware().concat(currencyAPI.middleware),
   });
 };
 
